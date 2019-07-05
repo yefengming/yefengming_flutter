@@ -6,6 +6,7 @@ import './demo/bottom_navigation_bar_demo.dart'; //导航栏和tabbar
 import './demo/basic_demo.dart';  //基础部件，文字图像样式设置
 import './demo/layout_demo.dart'; //布局
 import './demo/view_demo.dart'; //view视图
+import './demo/sliver_demo.dart';
 
 void main() => runApp(App());
 
@@ -15,7 +16,8 @@ class App extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(  //小部件
       debugShowCheckedModeBanner: false, //隐藏右上角debug图标
-      home: Home(), //默认的首页
+      home: Home(), //一、默认的首页
+//      home: SliverDemo(), //二、Sliver
       theme: ThemeData(
         primarySwatch: Colors.yellow, //导航栏颜色
         highlightColor: Colors.red, //高亮颜色
@@ -33,7 +35,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         backgroundColor: Colors.grey[100], //页面颜色
         appBar: AppBar(  //顶部工具栏
@@ -67,6 +69,7 @@ class Home extends StatelessWidget {
               Tab(icon: Icon(Icons.change_history)),
               Tab(icon: Icon(Icons.directions_bike)),
               Tab(icon: Icon(Icons.view_quilt)),
+              Tab(icon: Icon(Icons.access_time)),
             ],
           ),
         ),
@@ -80,6 +83,7 @@ class Home extends StatelessWidget {
 //              Icon(Icons.directions_bike, size: 128.0, color: Colors.black12),
               LayoutDemo(),
               ViewDemo(),
+              SliverDemo(),
             ],
         ),
         drawer: DrawerDemo(), //drawer:左边滑动显示,endDrawer:右边滑动显示
