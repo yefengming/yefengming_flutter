@@ -5,6 +5,7 @@ import './demo/drawer_demo.dart'; //左滑右滑抽屉
 import './demo/bottom_navigation_bar_demo.dart'; //导航栏和tabbar
 import './demo/basic_demo.dart';  //基础部件，文字图像样式设置
 import './demo/layout_demo.dart'; //布局
+import './demo/view_demo.dart'; //view视图
 
 void main() => runApp(App());
 
@@ -32,7 +33,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         backgroundColor: Colors.grey[100], //页面颜色
         appBar: AppBar(  //顶部工具栏
@@ -65,6 +66,7 @@ class Home extends StatelessWidget {
               Tab(icon: Icon(Icons.local_florist)),
               Tab(icon: Icon(Icons.change_history)),
               Tab(icon: Icon(Icons.directions_bike)),
+              Tab(icon: Icon(Icons.view_quilt)),
             ],
           ),
         ),
@@ -77,6 +79,7 @@ class Home extends StatelessWidget {
               BasicDemo(),
 //              Icon(Icons.directions_bike, size: 128.0, color: Colors.black12),
               LayoutDemo(),
+              ViewDemo(),
             ],
         ),
         drawer: DrawerDemo(), //drawer:左边滑动显示,endDrawer:右边滑动显示
