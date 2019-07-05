@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-//import 'model/post.dart';
-import './demo/listview_demo.dart';
-import './demo/drawer_demo.dart';
-import './demo/bottom_navigation_bar_demo.dart';
-import './demo/basic_demo.dart';
+//import 'model/post.dart'; //数据
+import './demo/listview_demo.dart'; //列表
+import './demo/drawer_demo.dart'; //左滑右滑抽屉
+import './demo/bottom_navigation_bar_demo.dart'; //导航栏和tabbar
+import './demo/basic_demo.dart';  //基础部件，文字图像样式设置
+import './demo/layout_demo.dart'; //布局
 
 void main() => runApp(App());
 
@@ -73,8 +74,9 @@ class Home extends StatelessWidget {
               ListViewDemo(),
 //              Icon(Icons.local_florist, size: 128.0, color: Colors.black12),
 //              Icon(Icons.change_history, size: 128.0, color: Colors.black12),
-            BasicDemo(),
-              Icon(Icons.directions_bike, size: 128.0, color: Colors.black12),
+              BasicDemo(),
+//              Icon(Icons.directions_bike, size: 128.0, color: Colors.black12),
+              LayoutDemo(),
             ],
         ),
         drawer: DrawerDemo(), //drawer:左边滑动显示,endDrawer:右边滑动显示
