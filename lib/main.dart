@@ -7,6 +7,7 @@ import './demo/basic_demo.dart';  //基础部件，文字图像样式设置
 import './demo/layout_demo.dart'; //布局
 import './demo/view_demo.dart'; //view视图
 import './demo/sliver_demo.dart';
+import './demo/navigator_demo.dart'; //路由
 
 void main() => runApp(App());
 
@@ -16,8 +17,19 @@ class App extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(  //小部件
       debugShowCheckedModeBanner: false, //隐藏右上角debug图标
-      home: Home(), //一、默认的首页
-//      home: SliverDemo(), //二、Sliver
+
+      //首页
+//      home: Home(), //一、默认的首页
+//      home: NavigatorDemo(), //二、Navigator
+      initialRoute: '/',  //三。设置初始路由
+
+        //路由名字
+      routes: {
+//        '/': (context) => NavigatorDemo(),
+        '/': (context) => Home(),
+        '/about': (context) => Page(title: 'About'), // /和about表示路由的根，初始路由，默认要显示的，不初始默认为home，initialRoute初始路由
+      },
+
       theme: ThemeData(
         primarySwatch: Colors.yellow, //导航栏颜色
         highlightColor: Colors.red, //高亮颜色
