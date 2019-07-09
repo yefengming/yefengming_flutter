@@ -38,13 +38,24 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   final registerFormKey = GlobalKey<FormState>();
   String userName, passWord;
+  bool autovalidate = false; //自动验证默认关闭
 
   void submitRegisterForm() {
-    registerFormKey.currentState.save(); //执行保存方法
-    registerFormKey.currentState.validate(); //执行验证方法
-
-    debugPrint('username: $userName');
-    debugPrint('password: $passWord');
+    if (registerFormKey.currentState.validate()) { //执行验证方法
+      registerFormKey.currentState.save(); //执行保存方法
+      debugPrint('username: $userName');
+      debugPrint('password: $passWord');
+      
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Registering...'),
+        ),
+      );
+    } else {
+      setState(() {
+        autovalidate = true;  //点提交之后开启自动验证
+      });
+    }
   }
 
   String validateUsername(value) {
@@ -74,6 +85,7 @@ class _RegisterFormState extends State<RegisterForm> {
               userName = value;
             },
             validator: validateUsername, //验证
+            autovalidate: autovalidate,  //自动验证
           ),
           TextFormField(
             obscureText: true,
@@ -85,6 +97,7 @@ class _RegisterFormState extends State<RegisterForm> {
               passWord = value;
             },
             validator: validatePassword,
+            autovalidate: autovalidate,
           ),
           SizedBox(height: 32.0,), //按钮上面的间距
           Container( //提交按钮
