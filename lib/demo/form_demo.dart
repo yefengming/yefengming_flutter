@@ -36,21 +36,55 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+  final registerFormKey = GlobalKey<FormState>();
+  String userName, passWord;
+
+  void submitRegisterForm() {
+    registerFormKey.currentState.save(); //执行保存方法
+    registerFormKey.currentState.validate(); //执行验证方法
+
+    debugPrint('username: $userName');
+    debugPrint('password: $passWord');
+  }
+
+  String validateUsername(value) {
+    if (value.isEmpty) {
+      return 'Username is required';
+    }
+  }
+
+  String validatePassword(value) {
+    if (value.isEmpty) {
+      return 'Password is required';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: registerFormKey,
       child: Column(
         children: <Widget>[
           TextFormField(
             decoration: InputDecoration(
               labelText: 'Username',
+              helperText: '',
             ),
+            onSaved: (value) {
+              userName = value;
+            },
+            validator: validateUsername, //验证
           ),
           TextFormField(
             obscureText: true,
             decoration: InputDecoration(
               labelText: 'Password',
+              helperText: '', //出现错误信息更自然些
             ),
+            onSaved: (value) {
+              passWord = value;
+            },
+            validator: validatePassword,
           ),
           SizedBox(height: 32.0,), //按钮上面的间距
           Container( //提交按钮
@@ -59,7 +93,7 @@ class _RegisterFormState extends State<RegisterForm> {
               color: Theme.of(context).accentColor,
               child: Text('Register', style: TextStyle(color: Colors.white),),
               elevation: 0.0,
-              onPressed: () {},
+              onPressed: submitRegisterForm,
             ),
           ),
         ],
