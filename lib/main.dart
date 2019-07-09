@@ -9,6 +9,7 @@ import './demo/view_demo.dart'; //view视图
 import './demo/sliver_demo.dart';
 import './demo/navigator_demo.dart'; //路由
 import './demo/form_demo.dart';
+import './demo/meterial_components.dart';
 
 void main() => runApp(App());
 
@@ -23,7 +24,8 @@ class App extends StatelessWidget {
 //      home: Home(), //一、默认的首页
 //      home: NavigatorDemo(), //二、Navigator
 //      initialRoute: '/',  //三。设置初始路由
-        initialRoute: '/form',
+//        initialRoute: '/form',
+        initialRoute: '/mdc',
 
         //路由名字
       routes: {
@@ -31,12 +33,13 @@ class App extends StatelessWidget {
         '/': (context) => Home(),
         '/about': (context) => Page(title: 'About'), // /和about表示路由的根，初始路由，默认要显示的，不初始默认为home，initialRoute初始路由
         '/form': (context) => FormDemo(),
+        '/mdc': (context) => MeterialComponents(),
       },
 
       theme: ThemeData(
         primarySwatch: Colors.yellow, //导航栏颜色
-        highlightColor: Colors.red, //高亮颜色
-        splashColor: Colors.blue, // 波纹颜色
+        highlightColor: Color.fromRGBO(255, 255, 255, 0.5), //高亮颜色
+        splashColor: Colors.white70, // 波纹颜色
         accentColor: Color.fromRGBO(3, 54, 255, 1.0),
       )
     );
