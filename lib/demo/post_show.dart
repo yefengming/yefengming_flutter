@@ -36,3 +36,5 @@ class PostShow extends StatelessWidget {
     );
   }
 }
+
+//详情页
