@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import './button_demo.dart';
 import './floating_action_button_demo.dart';
 import './popup_menu_button_demo.dart';
+import './form_demo.dart';
+import './checkbox_demo.dart';
+import './radio_demo.dart';
+import './switch_demo.dart';
+import './slider_demo.dart';
+import './datetime_demo.dart';
 
 class MeterialComponents extends StatelessWidget {
   @override
@@ -13,6 +19,30 @@ class MeterialComponents extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(
+            title: 'Datetime',
+            page: DateTimeDemo(), //日期
+          ),
+          ListItem(
+            title: 'Slider',
+            page: SliderDemo(), //开关
+          ),
+          ListItem(
+            title: 'Switch',
+            page: SwitchDemo(), //开关
+          ),
+          ListItem(
+            title: 'Radio',
+            page: RadioDemo(), //单选按钮
+          ),
+          ListItem(
+            title: 'Checkbox',
+            page: CheckboxDemo(), //复选框
+          ),
+          ListItem(
+            title: 'Form',
+            page: FormDemo(), //表单
+          ),
           ListItem(
             title: 'PopupMenuButton',
             page: PopupMenuButtonDemo(), //弹出式菜单按钮
