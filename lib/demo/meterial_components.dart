@@ -13,6 +13,11 @@ import './alert_dialog_demo.dart';
 import './bottom_sheet_demo.dart';
 import './snack_bar_demo.dart';
 import './expansion_panel_demo.dart';
+import './chip_demo.dart';
+import './data_table_demo.dart';
+import './paginated_data_table_demo.dart';
+import './card_demo.dart';
+import './stepper_demo.dart';
 
 class MeterialComponents extends StatelessWidget {
   @override
@@ -24,6 +29,26 @@ class MeterialComponents extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(
+            title: 'StepperDemo',
+            page: StepperDemo(), // 步骤
+          ),
+          ListItem(
+            title: 'CardDemo',
+            page: CardDemo(), //卡片
+          ),
+          ListItem(
+            title: 'PaginatedDataTable',
+            page: PaginatedDataTableDemo(), //分页显示表格数据
+          ),
+          ListItem(
+            title: 'DataTable',
+            page: DataTableDemo(), //表格
+          ),
+          ListItem(
+            title: 'Chip',
+            page: ChipDemo(), //小碎片
+          ),
           ListItem(
             title: 'ExpansionPanel',
             page: ExpansionPanelDemo(), //收缩面板
