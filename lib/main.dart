@@ -10,6 +10,9 @@ import './demo/sliver_demo.dart';
 import './demo/navigator_demo.dart'; //路由
 import './demo/form_demo.dart';
 import './demo/meterial_components.dart';
+import './demo/state/state_management_demo.dart';
+import './demo/state/state_management_demo2.dart';
+import './demo/state/state_management_demo3.dart';
 
 void main() => runApp(App());
 
@@ -24,8 +27,11 @@ class App extends StatelessWidget {
 //      home: Home(), //一、默认的首页
 //      home: NavigatorDemo(), //二、Navigator
 //      initialRoute: '/',  //三。设置初始路由
-//        initialRoute: '/form',
-        initialRoute: '/mdc',
+//        initialRoute: '/form', //四、表单
+//        initialRoute: '/mdc', //五、按钮/输入/对话框/列表
+//        initialRoute: '/state_management', //六、state_management小部件
+//        initialRoute: '/state_management2', //七、创建与使用InheritedWidget有效传递数据给子部件
+        initialRoute: '/state_management3', //八、使用ScopedModel传递数据
 
         //路由名字
       routes: {
@@ -34,6 +40,9 @@ class App extends StatelessWidget {
         '/about': (context) => Page(title: 'About'), // /和about表示路由的根，初始路由，默认要显示的，不初始默认为home，initialRoute初始路由
         '/form': (context) => FormDemo(),
         '/mdc': (context) => MeterialComponents(),
+        '/state_management': (context) => StateManagementDemo(),
+        '/state_management2': (context) => StateManagementDemo2(),
+        '/state_management3': (context) => StateManagementDemo3(),
       },
 
       theme: ThemeData(
