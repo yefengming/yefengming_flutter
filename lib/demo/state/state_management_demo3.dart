@@ -46,6 +46,7 @@ class Counter extends StatelessWidget {
   }
 }
 
+////需要安装第三方库
 class CountModel extends Model { ////创建model
   int _count = 0;
   int get count => _count;
