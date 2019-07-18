@@ -21,17 +21,27 @@ class StreamDemoHome extends StatefulWidget {
 
 class _StreamDemoHomeState extends State<StreamDemoHome> {
   StreamSubscription _streamDemoSubscription;
+  StreamController<String> _streamDemo;
+
+  @override
+  void dispose() { //移除小部件执行
+    _streamDemo.close();  //不需要的stream关掉
+    super.dispose();
+  }
 
   @override
   void initState() {
     super.initState();
 
     print('Cream a stream');
-    Stream<String> _streamDemo = Stream.fromFuture(fetchData()); //fromFuture创建stream
+//    Stream<String> _streamDemo = Stream.fromFuture(fetchData()); //一、fromFuture创建stream
+    _streamDemo = StreamController<String>(); //二、StreamController创建
 
     print('Stat listening on a stream');
+//    _streamDemoSubscription =
+//        _streamDemo.listen(onData, onError: onError, onDone: onDone); //监听/订阅stream
     _streamDemoSubscription =
-        _streamDemo.listen(onData, onError: onError, onDone: onDone); //监听/订阅stream
+        _streamDemo.stream.listen(onData, onError: onError, onDone: onDone);
 
     print('Initialize completed');
   }
@@ -66,6 +76,15 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   }
 
 
+  ////往stream添加数据data
+  void _addDataToSteam() async {
+    print('Add data to stream');
+
+    String data = await fetchData();
+    _streamDemo.add(data);
+  }
+
+
   Future<String> fetchData() async {
     await Future.delayed(Duration(seconds: 5));
     return 'hello~';
@@ -90,6 +109,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
             FlatButton(
               child: Text('Cancle'),
               onPressed: _cancleSteam,
+            ),
+            FlatButton(
+              child: Text('Add'),
+              onPressed: _addDataToSteam,
             ),
           ],
         ),
