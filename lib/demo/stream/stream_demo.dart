@@ -23,6 +23,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   StreamSubscription _streamDemoSubscription;
   StreamController<String> _streamDemo;
   StreamSink _sinkDemo;
+  String _data = '...';
 
   @override
   void dispose() { //移除小部件执行
@@ -57,6 +58,9 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   }
 
   void onData(String data) {
+    setState(() {
+      _data = data; //在界面上显示stream的数据
+    });
     print('$data');
   }
 
@@ -98,27 +102,33 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
-              child: Text('Pause'),
-              onPressed: _pauseStream,
-            ),
-            FlatButton(
-              child: Text('Resume'),
-              onPressed: _resumeSteam,
-            ),
-            FlatButton(
-              child: Text('Cancle'),
-              onPressed: _cancleSteam,
-            ),
-            FlatButton(
-              child: Text('Add'),
-              onPressed: _addDataToSteam,
+            Text(_data),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                FlatButton(
+                  child: Text('Pause'),
+                  onPressed: _pauseStream,
+                ),
+                FlatButton(
+                  child: Text('Resume'),
+                  onPressed: _resumeSteam,
+                ),
+                FlatButton(
+                  child: Text('Cancle'),
+                  onPressed: _cancleSteam,
+                ),
+                FlatButton(
+                  child: Text('Add'),
+                  onPressed: _addDataToSteam,
+                ),
+              ],
             ),
           ],
-        ),
+        )
       ),
     );
   }
