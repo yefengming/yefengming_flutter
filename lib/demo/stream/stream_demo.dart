@@ -22,6 +22,7 @@ class StreamDemoHome extends StatefulWidget {
 class _StreamDemoHomeState extends State<StreamDemoHome> {
   StreamSubscription _streamDemoSubscription;
   StreamController<String> _streamDemo;
+  StreamSink _sinkDemo;
 
   @override
   void dispose() { //移除小部件执行
@@ -36,6 +37,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     print('Cream a stream');
 //    Stream<String> _streamDemo = Stream.fromFuture(fetchData()); //一、fromFuture创建stream
     _streamDemo = StreamController<String>(); //二、StreamController创建
+    _sinkDemo = _streamDemo.sink;
 
     print('Stat listening on a stream');
 //    _streamDemoSubscription =
@@ -81,7 +83,8 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     print('Add data to stream');
 
     String data = await fetchData();
-    _streamDemo.add(data);
+//    _streamDemo.add(data);
+    _sinkDemo.add(data); //使用Sink往Stream上添加数据
   }
 
 
