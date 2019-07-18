@@ -13,6 +13,7 @@ import './demo/meterial_components.dart';
 import './demo/state/state_management_demo.dart';
 import './demo/state/state_management_demo2.dart';
 import './demo/state/state_management_demo3.dart';
+import './demo/stream/stream_demo.dart';
 
 void main() => runApp(App());
 
@@ -31,7 +32,8 @@ class App extends StatelessWidget {
 //        initialRoute: '/mdc', //五、按钮/输入/对话框/列表
 //        initialRoute: '/state_management', //六、state_management小部件
 //        initialRoute: '/state_management2', //七、创建与使用InheritedWidget有效传递数据给子部件
-        initialRoute: '/state_management3', //八、使用ScopedModel传递数据
+//        initialRoute: '/state_management3', //八、使用ScopedModel传递数据
+        initialRoute: '/stream', // 九、stream
 
         //路由名字
       routes: {
@@ -43,6 +45,7 @@ class App extends StatelessWidget {
         '/state_management': (context) => StateManagementDemo(),
         '/state_management2': (context) => StateManagementDemo2(),
         '/state_management3': (context) => StateManagementDemo3(),
+        '/stream': (context) => StreamDemo(),
       },
 
       theme: ThemeData(
