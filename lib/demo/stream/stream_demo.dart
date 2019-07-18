@@ -37,7 +37,8 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     print('Cream a stream');
 //    Stream<String> _streamDemo = Stream.fromFuture(fetchData()); //一、fromFuture创建stream
-    _streamDemo = StreamController<String>(); //二、StreamController创建
+//    _streamDemo = StreamController<String>(); //二、StreamController创建
+    _streamDemo = StreamController.broadcast(); //三、
     _sinkDemo = _streamDemo.sink;
 
     print('Stat listening on a stream');
@@ -45,6 +46,8 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 //        _streamDemo.listen(onData, onError: onError, onDone: onDone); //监听/订阅stream
     _streamDemoSubscription =
         _streamDemo.stream.listen(onData, onError: onError, onDone: onDone);
+
+    _streamDemo.stream.listen(onData, onError: onError, onDone: onDone);
 
     print('Initialize completed');
   }
@@ -105,7 +108,14 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(_data),
+//            Text(_data),
+            StreamBuilder( //根据Stream上的数据构建小部件
+              stream: _streamDemo.stream,
+              initialData: '...',
+              builder: (context, snapshot) {
+                return Text('${snapshot.data}');
+              },
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
