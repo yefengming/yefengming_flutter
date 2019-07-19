@@ -17,6 +17,7 @@ import './demo/stream/stream_demo.dart';
 import './demo/rxdart/rxdart_demo.dart';
 import './demo/bloc/bloc_demo.dart';
 import './demo/http/http_demo.dart';
+import './demo/animation/animation_demo.dart';
 
 void main() => runApp(App());
 
@@ -39,7 +40,8 @@ class App extends StatelessWidget {
 //        initialRoute: '/stream', // 九、stream
 //        initialRoute: '/rxdart', //十、扩展的dart里的stream的功能
 //        initialRoute: '/bloc', //十一、bloc
-        initialRoute: '/http', //十二、http
+//        initialRoute: '/http', //十二、http
+        initialRoute: '/animation', //十二、animation
 
         //路由名字
       routes: {
@@ -55,6 +57,7 @@ class App extends StatelessWidget {
         '/rxdart': (context) => RxDartDemo(),
         '/bloc': (context) => BlocDemo(),
         '/http': (context) => HttpDemo(),
+        '/animation': (context) => AnimationDemo(),
       },
 
       theme: ThemeData(
