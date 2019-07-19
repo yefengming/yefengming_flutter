@@ -26,6 +26,9 @@ class _AnimationDemoHomeState extends State<AnimationDemoHome>
   Animation animation;
   Animation animationColor;
 
+  ////Curve动画曲线
+  CurvedAnimation curve;
+
   @override
   void initState() {
     super.initState();
@@ -53,9 +56,17 @@ class _AnimationDemoHomeState extends State<AnimationDemoHome>
 
 
      ////设置动画范围值（数字、颜色）
-     animation = Tween(begin: 32.0, end: 100.0).animate(animationDemoController);
-     animationColor =
-         ColorTween(begin: Colors.red, end: Colors.red[900]).animate(animationDemoController);
+//     animation = Tween(begin: 32.0, end: 100.0).animate(animationDemoController);
+//     animationColor =
+//         ColorTween(begin: Colors.red, end: Colors.red[900]).animate(animationDemoController);
+     
+     
+     ////动画曲线
+    curve = 
+        CurvedAnimation(parent: animationDemoController, curve: Curves.bounceInOut);
+    animation = Tween(begin: 32.0, end: 100.0).animate(curve);
+    animationColor =
+        ColorTween(begin: Colors.red, end: Colors.red[900]).animate(curve);
   }
 
   @override
