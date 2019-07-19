@@ -15,6 +15,7 @@ import './demo/state/state_management_demo2.dart';
 import './demo/state/state_management_demo3.dart';
 import './demo/stream/stream_demo.dart';
 import './demo/rxdart/rxdart_demo.dart';
+import './demo/bloc/bloc_demo.dart';
 
 void main() => runApp(App());
 
@@ -35,7 +36,8 @@ class App extends StatelessWidget {
 //        initialRoute: '/state_management2', //七、创建与使用InheritedWidget有效传递数据给子部件
 //        initialRoute: '/state_management3', //八、使用ScopedModel传递数据
 //        initialRoute: '/stream', // 九、stream
-        initialRoute: '/rxdart', //十、扩展的dart里的stream的功能
+//        initialRoute: '/rxdart', //十、扩展的dart里的stream的功能
+        initialRoute: '/bloc', //十一、bloc
 
         //路由名字
       routes: {
@@ -49,6 +51,7 @@ class App extends StatelessWidget {
         '/state_management3': (context) => StateManagementDemo3(),
         '/stream': (context) => StreamDemo(),
         '/rxdart': (context) => RxDartDemo(),
+        '/bloc': (context) => BlocDemo(),
       },
 
       theme: ThemeData(
