@@ -41,12 +41,14 @@ class _AnimationDemoHomeState extends State<AnimationDemoHome>
       vsync: this,
     );
 
-    animationDemoController.addListener(() {
-//      print('${animationDemoController.value}');
-       setState(() {
 
-       });
-    });
+    ////AnimatedWidget代替
+//    animationDemoController.addListener(() {  //监听动画，动画有变化，执行setState，使用当前动画值重建小部件，可以把小部件放在可以把小部件放在AnimatedWidget，有变化时重建自己
+////      print('${animationDemoController.value}');
+//       setState(() {
+//
+//       });
+//    });
 
 //    animationDemoController.forward(); //开启动画
 
@@ -87,23 +89,64 @@ class _AnimationDemoHomeState extends State<AnimationDemoHome>
 //      )
 //    );
 
+//    return Center(
+//        child: IconButton(
+//          icon: Icon(Icons.favorite),
+////          iconSize: animationDemoController.value,
+//          iconSize: animation.value,
+//          color: animationColor.value,
+//          onPressed: () {
+////            animationDemoController.forward();
+//             switch (animationDemoController.status) {
+//               case AnimationStatus.completed:
+//                 animationDemoController.reverse(); //动画播放完成，倒退播放动画
+//                 break;
+//               default:
+//                 animationDemoController.forward();
+//             }
+//          },
+//        )
+//    );
+
+    ////AnimatedWidget
     return Center(
-        child: IconButton(
-          icon: Icon(Icons.favorite),
+        child: AnimatedHeart(
+          animations: [
+            animation,
+            animationColor,
+          ],
+          controller: animationDemoController,
+        ),
+    );
+  }
+}
+
+class AnimatedHeart extends AnimatedWidget {
+  final List animations;
+  final AnimationController controller;
+
+  AnimatedHeart({
+    this.animations,
+    this.controller,
+  }) : super(listenable: controller);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.favorite),
 //          iconSize: animationDemoController.value,
-          iconSize: animation.value,
-          color: animationColor.value,
-          onPressed: () {
+      iconSize: animations[0].value,
+      color: animations[1].value,
+      onPressed: () {
 //            animationDemoController.forward();
-             switch (animationDemoController.status) {
-               case AnimationStatus.completed:
-                 animationDemoController.reverse(); //动画播放完成，倒退播放动画
-                 break;
-               default:
-                 animationDemoController.forward();
-             }
-          },
-        )
+        switch (controller.status) {
+          case AnimationStatus.completed:
+            controller.reverse(); //动画播放完成，倒退播放动画
+            break;
+          default:
+            controller.forward();
+        }
+      },
     );
   }
 }
