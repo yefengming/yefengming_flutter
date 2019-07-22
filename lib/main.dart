@@ -18,6 +18,9 @@ import './demo/rxdart/rxdart_demo.dart';
 import './demo/bloc/bloc_demo.dart';
 import './demo/http/http_demo.dart';
 import './demo/animation/animation_demo.dart';
+import './demo/i18n/i18n_demo.dart';
+import 'package:flutter_localizations/flutter_localizations.dart'; //国际化
+import 'package:yefengming_flutter/demo/i18n/map/yefengming_demo_localizations.dart';
 
 void main() => runApp(App());
 
@@ -26,6 +29,21 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(  //小部件
+      ////国际化
+//      locale: Locale('en', 'US'), //当前使用的语言
+//      localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) { //当前使用的语言
+//        return Locale('en', 'US');
+//      },
+      locale: Locale('zh', 'CN'),
+      localizationsDelegates: [ //列表，生成本地化的值
+        YefengmingDemoLocalizationsDelegate(), ////自己定义的本地化资源
+        GlobalMaterialLocalizations.delegate, //提供应用里面Material提供的字符串
+        GlobalWidgetsLocalizations.delegate, //定义小部件默认文字方向
+      ],
+      supportedLocales: [ //语言  //ios在info.plist里添加Localizations，添加语言
+        Locale('en', 'US'), //表示语言的代码en，表示地区的代码US
+        Locale('zh', 'CN'), //简体中文
+      ],
       debugShowCheckedModeBanner: false, //隐藏右上角debug图标
 
       //首页
@@ -41,7 +59,8 @@ class App extends StatelessWidget {
 //        initialRoute: '/rxdart', //十、扩展的dart里的stream的功能
 //        initialRoute: '/bloc', //十一、bloc
 //        initialRoute: '/http', //十二、http
-        initialRoute: '/animation', //十二、animation
+//        initialRoute: '/animation', //十二、animation
+        initialRoute: '/i18n', //十三、i18n国际化
 
         //路由名字
       routes: {
@@ -58,6 +77,7 @@ class App extends StatelessWidget {
         '/bloc': (context) => BlocDemo(),
         '/http': (context) => HttpDemo(),
         '/animation': (context) => AnimationDemo(),
+        '/i18n': (context) => I18nDemo(),
       },
 
       theme: ThemeData(
