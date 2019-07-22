@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yefengming_flutter/demo/i18n/map/yefengming_demo_localizations.dart';
+//import 'package:yefengming_flutter/demo/i18n/map/yefengming_demo_localizations.dart';
+import 'package:yefengming_flutter/demo/i18n/intl/yefengming_demo_localizations.dart';
 
 class I18nDemo extends StatelessWidget {
   @override
@@ -19,7 +20,8 @@ class I18nDemo extends StatelessWidget {
             Text(locale.toString()), //zh_CN
             Text(
 //              Localizations.of(context, YefengmingDemoLocalizations).title, //在本地资源类中添加static方法
-              YefengmingDemoLocalizations.of(context).title,
+//              YefengmingDemoLocalizations.of(context).title,
+              YefengmingDemoLocalizations.of(context).greet('yefengming'), //使用本地化信息
               style: Theme.of(context).textTheme.title,
             ),
           ],

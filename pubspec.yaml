@@ -33,6 +33,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  intl_translation: ^0.17.2 #翻译 生成arb文件：flutter pub pub run intl_translation:extract_to_arb --output-dir=lib/demo/i18n/intl/ lib/demo/i18n/intl/yefengming_demo_localizations.dart
 
 
 # For information on the generic Dart part of this file, see the
